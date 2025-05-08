@@ -82,6 +82,7 @@ export function WaitlistButton() {
         setIsDrawerOpen(false);
       }
     } catch (error) {
+      console.error("Erreur lors de l'enregistrement :", error);
       toast.error("Une erreur est survenue. Veuillez réessayer.");
     }
   };

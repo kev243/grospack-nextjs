@@ -53,7 +53,7 @@ import { useForm } from "react-hook-form";
 import { prospectSchema } from "@/lib/zod-shemas";
 
 export function WaitlistButton() {
-  const [openCity, setOpenCity] = useState(false);
+  // const [openCity, setOpenCity] = useState(false);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false); // État pour le Drawer
 

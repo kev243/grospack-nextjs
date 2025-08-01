@@ -137,58 +137,49 @@ export function WaitlistButton() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Ville</FormLabel>
-                      <Popover open={openCity} onOpenChange={setOpenCity}>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant="outline"
-                              role="combobox"
-                              aria-expanded={openCity}
-                              className="w-full justify-between"
-                            >
-                              {field.value
-                                ? canadianCities.find(
-                                    (c) => c.value === field.value
-                                  )?.label
-                                : "Sélectionnez une ville..."}
-                              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent
-                          className="w-[var(--radix-popover-trigger-width)] max-w-[90vw] p-0"
-                          align="start"
-                        >
-                          <Command>
-                            <CommandInput placeholder="Rechercher une ville..." />
-                            <CommandList>
-                              <CommandEmpty>Aucune ville trouvée.</CommandEmpty>
-                              <CommandGroup className="max-h-60 overflow-y-auto">
-                                {canadianCities.map((c) => (
-                                  <CommandItem
-                                    key={c.value}
-                                    value={c.value}
-                                    onSelect={() => {
-                                      form.setValue("city", c.value);
-                                      setOpenCity(false);
-                                    }}
-                                  >
-                                    <Check
-                                      className={cn(
-                                        "mr-2 h-4 w-4",
-                                        field.value === c.value
-                                          ? "opacity-100"
-                                          : "opacity-0"
-                                      )}
-                                    />
-                                    {c.label}
-                                  </CommandItem>
-                                ))}
-                              </CommandGroup>
-                            </CommandList>
-                          </Command>
-                        </PopoverContent>
-                      </Popover>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Sélectionnez votre ville" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent className="max-h-60">
+                          {/* Villes principales du Québec */}
+                          <SelectItem value="montreal">Montréal</SelectItem>
+                          <SelectItem value="quebec">Québec</SelectItem>
+                          <SelectItem value="gatineau">Gatineau</SelectItem>
+                          <SelectItem value="sherbrooke">Sherbrooke</SelectItem>
+                          <SelectItem value="laval">Laval</SelectItem>
+                          <SelectItem value="longueuil">Longueuil</SelectItem>
+                          <SelectItem value="terrebonne">Terrebonne</SelectItem>
+                          <SelectItem value="saguenay">Saguenay</SelectItem>
+                          <SelectItem value="levis">Lévis</SelectItem>
+                          <SelectItem value="trois-rivieres">
+                            Trois-Rivières
+                          </SelectItem>
+
+                          {/* Villes principales de l'Ontario */}
+                          <SelectItem value="toronto">Toronto</SelectItem>
+                          <SelectItem value="ottawa">Ottawa</SelectItem>
+                          <SelectItem value="hamilton">Hamilton</SelectItem>
+                          <SelectItem value="london">London</SelectItem>
+                          <SelectItem value="kitchener">Kitchener</SelectItem>
+                          <SelectItem value="windsor">Windsor</SelectItem>
+
+                          {/* Autres provinces principales */}
+                          <SelectItem value="vancouver">Vancouver</SelectItem>
+                          <SelectItem value="calgary">Calgary</SelectItem>
+                          <SelectItem value="edmonton">Edmonton</SelectItem>
+                          <SelectItem value="winnipeg">Winnipeg</SelectItem>
+                          <SelectItem value="halifax">Halifax</SelectItem>
+
+                          {/* Option pour autres villes */}
+                          <SelectItem value="autre">Autre ville</SelectItem>
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}

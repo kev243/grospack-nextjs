@@ -155,7 +155,10 @@ export function WaitlistButton() {
                             </Button>
                           </FormControl>
                         </PopoverTrigger>
-                        <PopoverContent className="w-full p-0">
+                        <PopoverContent
+                          className="w-[var(--radix-popover-trigger-width)] max-w-[90vw] p-0"
+                          align="start"
+                        >
                           <Command>
                             <CommandInput placeholder="Rechercher une ville..." />
                             <CommandList>
